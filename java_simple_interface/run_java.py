@@ -47,8 +47,7 @@ def run_java_in_dir(target_dir: str, java_command: List[str]) -> Dict[str, Optio
             ["java"] + java_command,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True,
-            encoding="utf-8"
+            text=True
         )
         
         # Record command execution results
