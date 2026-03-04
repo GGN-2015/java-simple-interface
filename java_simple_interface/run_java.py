@@ -7,7 +7,11 @@ try:
 except:
     from java_version import java_exists
 
-def run_java_in_dir(target_dir: str, java_command: List[str]) -> Dict[str, Optional[str | int]]:
+def run_java_in_dir(
+        target_dir: str, 
+        java_command: List[str], 
+        encoding:str) -> Dict[str, Optional[str | int]]:
+
     """
     Execute a custom Java command in a specified directory, and switch back to the original working directory
     regardless of whether the command succeeds or fails.
@@ -47,7 +51,8 @@ def run_java_in_dir(target_dir: str, java_command: List[str]) -> Dict[str, Optio
             ["java"] + java_command,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            text=True
+            text=True,
+            encoding=encoding
         )
         
         # Record command execution results
