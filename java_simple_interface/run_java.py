@@ -53,8 +53,8 @@ def run_java_in_dir(target_dir: str, java_command: List[str]) -> Dict[str, Optio
         
         # Record command execution results
         result["return_code"] = proc.returncode
-        result["stdout"] = proc.stdout.strip()
-        result["stderr"] = proc.stderr.strip()
+        result["stdout"] = proc.stdout if proc.stdout else ""
+        result["stderr"] = proc.stderr if proc.stderr else ""
 
     except FileNotFoundError as e:
         # Handle case where java command or target file is not found
